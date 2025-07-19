@@ -125,6 +125,8 @@ The model is trained on brain MRI images categorized into:
 - **No Tumor**: Normal brain MRI scans
 - **Tumor**: Brain MRI scans with tumor presence
 
+Dataset source: [Brain Tumor MRI Dataset on Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+
 ## Contributing
 
 1. Fork the project

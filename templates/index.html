@@ -1,29 +1,122 @@
 {% extends "import.html" %} 
 {% block content %}
 
-<center>
-<br><h2>Brain Tumor Classification</h2><br>
-
-    <form id="upload-file" method="post" enctype="multipart/form-data">
-         <input type="file" name="file" class="btn btn-success" id="imageUpload" accept=".png, .jpg, .jpeg">
-    </form>
-
-
-    <div class="image-section" style="display:none;">
-         <img id="imagePreview"  class="img-responsive" src="#" style="width:300px;height:300px;"/><br><br>
-         <div>
-            <button type="button" class="btn btn-info btn-lg " id="btn-predict">Predict!</button>
-         </div>
+<div class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="hero-content">
+                    <i class="fas fa-brain hero-icon"></i>
+                    <h1 class="hero-title">AI-Powered Brain Tumor Detection</h1>
+                    <p class="hero-subtitle">Upload your brain scan image for instant AI analysis using advanced deep learning technology</p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
+<div class="main-content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="upload-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-upload me-2"></i>Upload Medical Image</h3>
+                        <p class="text-muted">Supported formats: PNG, JPG, JPEG</p>
+                    </div>
+                    
+                    <div class="upload-area" id="upload-area">
+                        <form id="upload-file" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" hidden>
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h4>Drag & Drop or Click to Upload</h4>
+                                <p>Upload your brain scan image here</p>
+                                <button type="button" class="btn btn-primary btn-upload" onclick="document.getElementById('imageUpload').click()">
+                                    <i class="fas fa-folder-open me-2"></i>Choose File
+                                </button>
+                            </div>
+                        </form>
+                    </div>
 
+                    <div class="image-preview-section" id="image-preview-section" style="display:none;">
+                        <div class="image-container">
+                            <img id="imagePreview" class="preview-image" src="#" alt="Preview"/>
+                        </div>
+                        <div class="prediction-controls">
+                            <button type="button" class="btn btn-success btn-lg btn-predict" id="btn-predict">
+                                <i class="fas fa-search me-2"></i>Analyze Image
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary btn-reset" onclick="resetUpload()">
+                                <i class="fas fa-redo me-2"></i>Upload New Image
+                            </button>
+                        </div>
+                    </div>
 
-    <div class="loader" style="display:none;"></div>
+                    <div class="loading-section" id="loading-section" style="display:none;">
+                        <div class="loader-container">
+                            <div class="medical-loader">
+                                <div class="pulse-ring"></div>
+                                <div class="pulse-ring"></div>
+                                <div class="pulse-ring"></div>
+                            </div>
+                            <h4 class="loading-text">Analyzing brain scan...</h4>
+                            <p class="loading-subtitle">AI is processing your image</p>
+                        </div>
+                    </div>
 
-    <h3 id="result">
-        <span> </span>
-    </h3>
+                    <div class="result-section" id="result-section" style="display:none;">
+                        <div class="result-card">
+                            <div class="result-header">
+                                <i class="fas fa-chart-line me-2"></i>Analysis Results
+                            </div>
+                            <div class="result-content">
+                                <div id="result-text" class="result-text"></div>
+                                <div class="result-disclaimer">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <small>This AI analysis is for research purposes only. Always consult with qualified healthcare professionals for medical diagnosis and treatment.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h5>Advanced AI Model</h5>
+                    <p>Trained on thousands of brain scan images using deep learning technology</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h5>Instant Results</h5>
+                    <p>Get analysis results in seconds with high accuracy and detailed insights</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5>Secure & Private</h5>
+                    <p>Your medical images are processed securely and not stored permanently</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</center><br><br>
 {% endblock %}

@@ -39,9 +39,50 @@ def allowed_file(filename):
 
 def get_className(classNo):
     if classNo == 0:
-        return "Based on the results of your provided image, I can reassure you that you do not have a brain tumor."
+        return """
+        <div class="result-positive">
+            <div class="result-icon">
+                <i class="fas fa-check-circle text-success" style="font-size: 2rem;"></i>
+            </div>
+            <h4 class="text-success mt-3">No Brain Tumor Detected</h4>
+            <p class="result-description">
+                The AI analysis of your brain scan indicates <strong>no signs of a brain tumor</strong>. 
+                The neural patterns and tissue structures appear normal based on our deep learning model's assessment.
+            </p>
+            <div class="confidence-indicator">
+                <small class="text-muted">
+                    <i class="fas fa-info-circle"></i> 
+                    This result is based on AI analysis of the provided image
+                </small>
+            </div>
+        </div>
+        """
     elif classNo == 1:
-        return "I regret to inform you that the provided image indicate the presence of a brain tumor."
+        return """
+        <div class="result-negative">
+            <div class="result-icon">
+                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 2rem;"></i>
+            </div>
+            <h4 class="text-warning mt-3">Potential Brain Tumor Detected</h4>
+            <p class="result-description">
+                The AI analysis has identified <strong>potential abnormal tissue patterns</strong> that may indicate 
+                the presence of a brain tumor. This finding requires immediate medical attention and professional evaluation.
+            </p>
+            <div class="medical-advice">
+                <div class="alert alert-info">
+                    <i class="fas fa-user-md"></i>
+                    <strong>Recommended Action:</strong> Please consult with a qualified neurologist or radiologist 
+                    for comprehensive medical imaging and professional diagnosis.
+                </div>
+            </div>
+            <div class="confidence-indicator">
+                <small class="text-muted">
+                    <i class="fas fa-info-circle"></i> 
+                    This result is based on AI analysis and requires medical verification
+                </small>
+            </div>
+        </div>
+        """
 
 def getResult(img):
     try:
